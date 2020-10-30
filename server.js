@@ -7,8 +7,6 @@ const port = 3000;
 const url = 'mongodb://localhost:27017/personal-budget';
 app.use(cors());
 
-
-
 app.use('/', express.static('public'));
 app.use(express.json());
 
@@ -34,7 +32,7 @@ app.get('/items', (req, res) => {
 });
 
 app.post('/additem', (req, res) => {
-    mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect(url, { useUnifiedTopology: true })
         .then(() => {
             var budgetItem = new budgetItemsModel({
                 title: req.body.title,
